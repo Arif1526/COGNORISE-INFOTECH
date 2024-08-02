@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./script.js"></script>
+    <title>Countdown Timer</title>
+    <style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: hsl(234deg, 17%, 12%);
+  display: flex;
+  justify-content: center;
+  line-height: 1.6;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.container {
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 1440px;
+  margin: auto 0;
+  height: 55%;
+}
+
+.countdown-container h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countdown .title {
+  background-color: #2c2c44;
+  border-radius: 5px;
+  margin-bottom: 1.3rem;
+  width: 100px;
+  height: 100px;
+}
+.countdown .title h1 {
+  color: hsl(345deg, 95%, 68%);
+  line-height: 100px;
+  font-size: 3rem;
+}
+.countdown .count p {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.7rem;
+  color: hsl(237deg, 18%, 59%);
+  font-weight: 500;
+}
+.countdown .count:not(:last-child) {
+  margin-right: 2rem;
+}
+
+    </style>
+    <script>
+        const countDown = () => {
+  const launchDate = new Date('31 July, 2022 00:00:00').getTime();
+  const presentDate = new Date().getTime();
+  const gap = launchDate - presentDate;
+
+  const second = 1000;
+  const minute = 60 * second;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+
+  const dayText = Math.floor(gap / day);
+  const hourText = Math.floor((gap % day) / hour);
+  const minuteText = Math.floor((gap % hour) / minute);
+  const secondText = Math.floor((gap % minute) / second);
+
+  document.querySelector('.day').textContent = dayText;
+  document.querySelector('.hour').textContent = hourText;
+  document.querySelector('.minute').textContent = minuteText;
+  document.querySelector('.second').textContent = secondText;
+};
+
+setInterval(countDown, 1000);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="countdown-container">
+        <h2>We're launching soon</h2>
+
+        <div class="countdown">
+          <!-- day -->
+          <div class="count">
+            <div class="title">
+              <h1 class="day"></h1>
+            </div>
+            <p>days</p>
+          </div>
+
+          <!-- hour -->
+          <div class="count">
+            <div class="title">
+              <h1 class="hour"></h1>
+            </div>
+            <p>hours</p>
+          </div>
+
+          <!-- minutes -->
+          <div class="count">
+            <div class="title">
+              <h1 class="minute"></h1>
+            </div>
+            <p>minutes</p>
+          </div>
+
+          <!-- seconds -->
+          <div class="count">
+            <div class="title">
+              <h1 class="second"></h1>
+            </div>
+            <p>seconds</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
