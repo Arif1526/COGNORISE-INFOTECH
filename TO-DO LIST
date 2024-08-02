@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <script>
+        function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const taskText = taskInput.value.trim();
+
+    if (taskText === '') {
+        alert('Please enter a task.');
+        return;
+    }
+
+    const taskList = document.getElementById('taskList');
+    const listItem = document.createElement('li');
+    listItem.textContent = taskText;
+
+    const deleteButton = document.createElement('span');
+    deleteButton.textContent = 'x';
+    deleteButton.className = 'delete';
+    deleteButton.onclick = function() {
+        taskList.removeChild(listItem);
+    };
+
+    listItem.appendChild(deleteButton);
+    taskList.appendChild(listItem);
+    taskInput.value = '';
+}
+
+    </script>
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: paleturquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: paleturquoise;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 15%;
+    padding: 10px;
+    background-color:rgb(63, 170, 63);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+li .delete {
+    color: red;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>To-Do List</h1>
+        </div>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+</body>
+</html>
